@@ -20,35 +20,44 @@ class User extends CI_Controller {
 
 	public function submit_signup()
 {
+    // Form validation rules
     $this->form_validation->set_rules('user_name','Name','required');
     $this->form_validation->set_rules('email','Email','required|valid_email|is_unique[user.email]', array('is_unique' => 'This email address is already registered.'));
     $this->form_validation->set_rules('password','Password','required|min_length[8]');
 
+    // Check if form validation passed
     if($this->form_validation->run() == FALSE){
+        // If validation failed, return error messages as JSON response
         $response = array(
             'status' => 'error',
             'message' => validation_errors()
         );
-    }else{
+    } else {
+        // If validation passed, proceed with form submission
         $data['user_name'] = $this->input->post('user_name');
         $data['email'] = $this->input->post('email');
-        $data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT); // Hashing the password
+        $data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT); // Hash the password
         $this->load->model('user_model');
+        // Call the model method to store user data
         $response = $this->user_model->store($data);
         if($response == true){
+            // If user data stored successfully, return success message as JSON response
             $response = array(
                 'status' => 'success',
                 'message' => 'Successfully registered'
             );
-        }else{
+        } else {
+            // If user data storage failed, return error message as JSON response
             $response = array(
                 'status' => 'error',
                 'message' => 'Failed to register'
             );
         }
     }
+    // Return JSON response
     echo json_encode($response);
 }
+
 
 
     public function login(){
@@ -59,34 +68,34 @@ class User extends CI_Controller {
     }
 
     public function login_user(){
-		$this->form_validation->set_rules('email','Email','required|valid_email');
-		$this->form_validation->set_rules('password','Password','required');
-	
-		if($this->form_validation->run()==FALSE){
-			$this->load->view('login_form');
-		}else{
-			$email = $this->input->post('email');
-			$password = $this->input->post('password');
-			$this->load->database();
-			$this->load->model('user_model');
-			if($user = $this->user_model->getUser($email)){
-				if($user->password==$password){
-					$newdata = array(
-						'user_name' => $user->user_name,
-						'id' => $user->user_id
-					);
-					$this->session->set_userdata($newdata);
-					redirect('user/home');
-				}else{
-					$this->session->set_flashdata('error', 'Invalid password');
-					redirect('user/login');
-				}
-			}else{
-				$this->session->set_flashdata('error', 'No account exists with this email');
-				redirect('user/login');
-			}
-		}
-	}
+        $this->form_validation->set_rules('email','Email','required|valid_email');
+        $this->form_validation->set_rules('password','Password','required');
+    
+        if($this->form_validation->run()==FALSE){
+            $this->load->view('login_form');
+        }else{
+            $email = $this->input->post('email');
+            $password = $this->input->post('password');
+            $this->load->database();
+            $this->load->model('user_model');
+            if($user = $this->user_model->getUser($email)){
+                if(password_verify($password, $user->password)){ // Verify hashed password
+                    $newdata = array(
+                        'user_name' => $user->user_name,
+                        'id' => $user->user_id
+                    );
+                    $this->session->set_userdata($newdata);
+                    redirect('user/home');
+                }else{
+                    $this->session->set_flashdata('error', 'Invalid password');
+                    redirect('user/login');
+                }
+            }else{
+                $this->session->set_flashdata('error', 'No account exists with this email');
+                redirect('user/login');
+            }
+        }
+    }
 	
 
     public function history_data(){

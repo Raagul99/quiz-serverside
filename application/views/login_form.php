@@ -12,10 +12,16 @@
 
 /* Body styles */
 body {
-  background-color: #112233; /* Set background color */
-  color: white; /* Set text color */
+  background-image: url('https://www.etoncollege.com/wp-content/uploads/2020/06/shutterstock_1186919464-scaled.jpg');
+  background-size:cover; /* Adjust background image size */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
+  background-position: center; /* Center the background image */
+  color: black; /* Set text color */
+  
 }
-
+html, body {
+  height: 90%
+}
 /* Input field styles */
 input[type=text], input[type=password], select, textarea {
   width: 100%; /* Set width to 100% */
@@ -36,6 +42,7 @@ input.error, input.error[type=password], select.error, textarea.error {
 label {
   padding: 8px 8px 8px 0; /* Add padding */
   display: inline-block; /* Display as inline block */
+  font-weight: bold; /* Increase font weight for thickness */
 }
 
 /* Submit button styles */
@@ -56,17 +63,20 @@ input[type=submit]:hover {
 
 /* Container styles */
 .container {
-  border-radius: 5px; /* Add border radius */
-  background-color: #112233; /* Set background color */
-  padding: 20px; /* Add padding */
-  margin: 0 auto; /* Center horizontally */
+  border-radius: 10px; /* Add border radius */
+  background-color: rgba(17, 34, 51, 0.4); /* Set background color with transparency */
+  padding: 50px; /* Add padding */
+  margin: 90px auto; /* Center horizontally and add top margin */
   max-width: 400px; /* Set maximum width */
-  margin-top: 50px; /* Add top margin */
+  backdrop-filter: blur(5px); /* Apply a blur effect to the background */
 }
 
 /* Heading styles */
 h1 {
   text-align: center; /* Center align heading */
+  font-weight: bold; /* Increase font weight for thickness */
+  font-size: 40px; /* Adjust font size as needed */
+  
 }
 
 /* Grid column styles */
@@ -108,8 +118,8 @@ h1 {
 </style>
 </head>
 <body>
-<h1>Login Form</h1>
 <div class="container">
+<h1>LOGIN FORM</h1>
   <?php if ($this->session->flashdata('error')): ?>
     <div class="alert alert-danger"><?php echo $this->session->flashdata('error'); ?></div>
   <?php endif; ?>
@@ -146,8 +156,9 @@ h1 {
   </form>
   <!-- Link to signup page -->
   <div>
-    <p> Don't have an account? Click  <a href="<?=base_url('user/signup')?>">here</a></p>
-  </div>
+  <p style="font-size: 16px; font-weight: bold; color: #7DF9FF;"> Don't have an account? Click  <a href="<?=base_url('user/signup')?>">here</a></p>
+</div>
+
 </div>
 </body>
 </html>

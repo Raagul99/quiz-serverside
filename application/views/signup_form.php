@@ -11,8 +11,15 @@
 
 /* Body styles */
 body {
-  background-color: #112233; /* Set background color */
-  color: white; /* Set text color */
+  background-image: url('https://www.etoncollege.com/wp-content/uploads/2020/06/shutterstock_1186919464-scaled.jpg');
+  background-size: cover; /* Adjust background image size */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
+  background-position: center; /* Center the background image */
+  color: black; /* Set text color */
+}
+
+html, body {
+  height: 90%;
 }
 
 /* Input field styles */
@@ -35,8 +42,8 @@ input.error, input.error[type=password], select.error, textarea.error {
 label {
   padding: 8px 8px 8px 0; /* Add padding */
   display: inline-block; /* Display as inline block */
+  font-weight: bold; /* Increase font weight for thickness */
 }
-
 /* Submit button styles */
 input[type=submit] {
   background-color: black; /* Set background color */
@@ -55,17 +62,19 @@ input[type=submit]:hover {
 
 /* Container styles */
 .container {
-  border-radius: 5px; /* Add border radius */
-  background-color: #112233; /* Set background color */
-  padding: 20px; /* Add padding */
-  margin: 0 auto; /* Center horizontally */
+  border-radius: 10px; /* Add border radius */
+  background-color: rgba(17, 34, 51, 0.4); /* Set background color with transparency */
+  padding: 50px; /* Add padding */
+  margin: 90px auto; /* Center horizontally and add top margin */
   max-width: 400px; /* Set maximum width */
-  margin-top: 50px; /* Add top margin */
+  backdrop-filter: blur(5px); /* Apply a blur effect to the background */
 }
 
 /* Heading styles */
 h1 {
   text-align: center; /* Center align heading */
+  font-weight: bold; /* Increase font weight for thickness */
+  font-size: 40px; /* Adjust font size as needed */
 }
 
 /* Grid column styles */
@@ -96,32 +105,15 @@ h1 {
   }
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('form').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            dataType: 'json', // Expect JSON response
-            success: function(response) {
-                if(response.status == 'success') {
-                    $('.message').html('<span style="color:green">' + response.message + '</span>');
-                } else {
-                    $('.message').html('<span style="color:red">' + response.message + '</span>');
-                }
-            }
-        });
-    });
-});
-</script>
 </head>
 <body>
-<h1>Signup Form</h1>
+
 <div class="container">
-  <form method="post" action="<?=base_url('user/submit_signup')?>">
+  <h1>SIGNUP FORM</h1>
+  <?php if ($this->session->flashdata('signup_error')): ?>
+    <div class="alert alert-danger"><?php echo $this->session->flashdata('signup_error'); ?></div>
+  <?php endif; ?>
+  <form id="signupForm" method="post" action="<?=base_url('user/submit_signup')?>">
     <!-- Name input field -->
     <div class="row">
       <div class="col-25">
@@ -146,8 +138,8 @@ $(document).ready(function() {
         <?php if(form_error('email')) echo '<div style="color:red">'.form_error('email').'</div>'; ?>
       </div>
     </div>
-		<!-- Password input field -->
-		<div class="row">
+    <!-- Password input field -->
+    <div class="row">
       <div class="col-25">
         <label for="password">Password</label>
       </div>
@@ -168,8 +160,31 @@ $(document).ready(function() {
   <div class="message"></div>
   <!-- Link to login page -->
   <div>
-    <p> Already have an account? Click  <a href="<?=base_url('user/login')?>">here</a></p>
+    <p style="font-size: 16px; font-weight: bold; color: #7DF9FF;"> Already have an account? Click  <a href="<?=base_url('user/login')?>">here</a></p>
   </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#signupForm').submit(function(e) {
+        e.preventDefault(); // Prevent form submission
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'), // Form action URL
+            data: $(this).serialize(), // Serialize form data
+            dataType: 'json', // Expect JSON response
+            success: function(response) {
+                if(response.status == 'success') {
+                    $('.message').html('<span style="color:green">' + response.message + '</span>');
+                } else {
+                    $('.message').html('<span style="color:red">' + response.message + '</span>');
+                }
+            }
+        });
+    });
+});
+</script>
+
 </body>
 </html>
