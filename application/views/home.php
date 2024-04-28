@@ -49,10 +49,12 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
 </head>
 <body>
+
 <div class="topnav">
-  <a class="active"  href="/CI/user/home">Home</a>
+  <a href="/CI/user/welcome_page">Welcome</a>
   <a href="/CI/quiz/viewAddQuiz">Add Quiz</a>
   <a href="/CI/quiz">Take a quiz</a>
+  <a class="active"  href="/CI/user/home">Home</a>
   <a href="/CI/user/logout">Log Out</a>
 </div>
 

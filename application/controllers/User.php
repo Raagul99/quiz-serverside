@@ -62,7 +62,7 @@ class User extends CI_Controller {
 
     public function login(){
         if($this->session->has_userdata('id')){
-            redirect('user/home');
+            redirect('user/welcome_page');
         }
         $this->load->view('login_form');
     }
@@ -85,7 +85,7 @@ class User extends CI_Controller {
                         'id' => $user->user_id
                     );
                     $this->session->set_userdata($newdata);
-                    redirect('user/home');
+                    redirect('user/welcome_page');
                 }else{
                     $this->session->set_flashdata('error', 'Invalid password');
                     redirect('user/login');
@@ -97,6 +97,9 @@ class User extends CI_Controller {
         }
     }
 	
+    public function welcome_page(){
+        $this->load->view('welcome_page');
+    }
 
     public function history_data(){
         $draw = $this->input->get('draw');
