@@ -8,9 +8,9 @@
     <style>
         /* Custom Styles */
         body {
-            background: url('https://wallpapercave.com/wp/wp9153536.jpg') no-repeat center center fixed;
+            background: url('https://wallpapercave.com/wp/wp9081316.jpg') no-repeat center center fixed;
             background-size: cover;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(1px);
             font-family: Arial, sans-serif;
             color: #fff;
             margin: 0;
@@ -88,6 +88,16 @@
       
 
     </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
 </head>
 <body>
 <div class="topnav">
