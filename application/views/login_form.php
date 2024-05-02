@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -64,7 +64,7 @@ input[type=submit]:hover {
 /* Container styles */
 .container {
   border-radius: 10px; /* Add border radius */
-  background-color: rgba(17, 34, 51, 0.4); /* Set background color with transparency */
+  background-color: rgba(0, 0, 0, 0.1); /* Set background color with transparency */
   padding: 50px; /* Add padding */
   margin: 90px auto; /* Center horizontally and add top margin */
   max-width: 400px; /* Set maximum width */
@@ -156,7 +156,9 @@ h1 {
   </form>
   <!-- Link to signup page -->
   <div>
-  <p style="font-size: 16px; font-weight: bold; color: #7DF9FF;"> Don't have an account? Click  <a href="<?=base_url('user/signup')?>">here</a></p>
+    <p style="font-size: 16px; font-weight: bold; color: #000; text-stroke: 3px #fff;">
+        Don't have an account? Click <a href="<?=base_url('user/signup')?>">here</a>
+    </p>
 </div>
 
 </div>

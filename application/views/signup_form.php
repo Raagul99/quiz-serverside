@@ -63,7 +63,7 @@ input[type=submit]:hover {
 /* Container styles */
 .container {
   border-radius: 10px; /* Add border radius */
-  background-color: rgba(17, 34, 51, 0.4); /* Set background color with transparency */
+  background-color: rgba(0,0,0,0.1); /* Set background color with transparency */
   padding: 50px; /* Add padding */
   margin: 90px auto; /* Center horizontally and add top margin */
   max-width: 400px; /* Set maximum width */
@@ -110,8 +110,8 @@ h1 {
 
 <div class="container">
   <h1>SIGNUP FORM</h1>
-  <?php if ($this->session->flashdata('signup_error')): ?>
-    <div class="alert alert-danger"><?php echo $this->session->flashdata('signup_error'); ?></div>
+  <?php if ($this->session->flashdata('error')): ?>
+    <div class="alert alert-danger"><?php echo $this->session->flashdata('error'); ?></div>
   <?php endif; ?>
   <form id="signupForm" method="post" action="<?=base_url('user/submit_signup')?>">
     <!-- Name input field -->
@@ -160,7 +160,7 @@ h1 {
   <div class="message"></div>
   <!-- Link to login page -->
   <div>
-    <p style="font-size: 16px; font-weight: bold; color: #7DF9FF;"> Already have an account? Click  <a href="<?=base_url('user/login')?>">here</a></p>
+    <p style="font-size: 16px; font-weight: bold; color: #000;"> Already have an account? Click  <a href="<?=base_url('user/login')?>">here</a></p>
   </div>
 </div>
 

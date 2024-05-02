@@ -53,7 +53,7 @@ class User extends CI_Controller {
                 'message' => 'Failed to register'
             );
         }
-    }
+    }   
     // Return JSON response
     echo json_encode($response);
 }
