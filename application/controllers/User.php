@@ -124,8 +124,8 @@ class User extends CI_Controller {
         exit();
     }
 
-    public function home(){
-        $this->load->view('home');
+    public function history(){
+        $this->load->view('history');
     }
 
     public function logout(){

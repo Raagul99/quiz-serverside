@@ -4,37 +4,37 @@
     <meta charset="utf-8">
     <style>
         /* Add a black background color to the top navigation */
-        .topnav {
-          background-color: #112233; /* Set nav bar color */
-          overflow: hidden;
-        }
-
-        /* Style the links inside the navigation bar */
-        .topnav a {
-          float: left;
-          color: #f2f2f2;
-          text-align: center;
-          padding: 14px 16px;
-          text-decoration: none;
-          font-size: 17px;
-        }
-
-        /* Change the color of links on hover */
-        .topnav a:hover {
-          background-color: #ddd;
-          color: black;
-        }
-
-        /* Add a color to the active/current link */
-        .topnav a.active {
-          background-color: #000000;
-          color: white;
-        }
-
-        /* Set page background color */
         body {
-          background-color: #d9c5b2 !important; /* Set page color */
+            background: url('https://wallpapercave.com/wp/wp9081316.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(1px);
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
         }
+.topnav {
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background for navbar */
+    overflow: hidden;
+    
+}
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.topnav a.active {
+    background-color: #000000;
+    color: white;
+}
 		h1.welcome-message {
           text-align: center;
         }
@@ -53,8 +53,8 @@
 <div class="topnav">
   <a href="/CI/user/welcome_page">Welcome</a>
   <a href="/CI/quiz/viewAddQuiz">Add Quiz</a>
-  <a href="/CI/quiz">Take a quiz</a>
-  <a class="active"  href="/CI/user/home">Home</a>
+  <a href="/CI/quiz">Take Quiz</a>
+  <a class="active"  href="/CI/user/history">History</a>
   <a href="/CI/user/logout">Log Out</a>
 </div>
 

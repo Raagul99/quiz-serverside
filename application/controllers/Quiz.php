@@ -209,7 +209,7 @@ class Quiz extends CI_Controller {
 
 		$this->load->model('quiz_model');
 		$this->quiz_model->insertReview($user_id, $quiz_id, $review, $rating);
-		redirect('user/home');
+		redirect('user/history');
 
 
 
