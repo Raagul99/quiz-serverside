@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quiz Platform</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Custom Styles -->
     <style>
-        /* Custom Styles */
         body {
             background: url('https://wallpapercave.com/wp/wp9081316.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -20,7 +21,6 @@
         .topnav {
             background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background for navbar */
             overflow: hidden;
-            
         }
         .topnav a {
             float: left;
@@ -41,7 +41,7 @@
         .welcome-message {
             text-align: center;
             margin-top: 20px;
-            font-weight: bold; /* Increase font weight for thickness */
+            font-weight: bold;
             font-size: 40px;
             animation: changeColor 5s infinite; /* Apply animation for color change */
         }
@@ -85,21 +85,10 @@
             border-radius: 20px;
             background-color: #7DF9FF;
         }
-      
-
     </style>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
 </head>
 <body>
+<!-- Navbar -->
 <div class="topnav">
   <a class="active" href="/CI/user/welcome_page">Welcome</a>
   <a href="/CI/quiz/viewAddQuiz">Add Quiz</a>
@@ -108,25 +97,27 @@
   <a href="/CI/user/logout">Log Out</a>
 </div>
 
-
+<!-- Welcome Message Section -->
 <div class="intro">
-<h1 class="welcome-message">Welcome, <?php echo $this->session->user_name; ?>!</h1>
-
-  <p>Welcome to our quiz platform! Here you can expand your knowledge and challenge yourself with various quizzes. Get started by adding your own quiz or taking one from our collection. Have fun!</p>
+    <h1 class="welcome-message">Welcome, <?php echo $this->session->user_name; ?>!</h1>
+    <p>Welcome to our quiz platform! Here you can expand your knowledge and challenge yourself with various quizzes. Get started by adding your own quiz or taking one from our collection. Have fun!</p>
 </div>
 
+<!-- Add Quiz Section -->
 <div class="container">
   <h2>Add Quiz</h2>
   <p>Here you can add a new quiz.</p>
   <a href="/CI/quiz/viewAddQuiz" class="btn btn-primary">Go to Add Quiz</a>
 </div>
 
+<!-- Take Quiz Section -->
 <div class="container">
   <h2>Take Quiz</h2>
   <p>Ready to test your knowledge? Take a quiz now!</p>
   <a href="/CI/quiz" class="btn btn-primary">Go to Take Quiz</a>
 </div>
 
+<!-- Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>

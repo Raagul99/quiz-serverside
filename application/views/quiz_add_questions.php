@@ -1,14 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <style>
-        /* Add a black background color to the top navigation */
+        /* Top navigation bar */
         .topnav {
             background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background for navbar */
             overflow: hidden;
-            
         }
         .topnav a {
             float: left;
@@ -27,11 +27,11 @@
             color: white;
         }
 
-        /* Set page background color */
+        /* Page background */
         body {
             background: url('https://wallpapercave.com/wp/wp9081316.jpg') no-repeat center center fixed;
             background-size: cover;
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(1px); /* applying blur effect */
             font-family: Arial, sans-serif;
             color: #fff;
             margin: 0;
@@ -39,21 +39,21 @@
             height: 100vh;
         }
 
-        /* Center the welcome message */
+        /* Center align the welcome message */
         h3 {
           text-align: center;
         }
 
-        /* Center the form */
+        /* Form container */
         .container {
           margin: 0 auto;
           width: 50%;
           padding: 20px;
-          background-color: rgba(0, 0, 0, 0.5);
+          background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
           border-radius: 5px;
         }
 
-        /* Style the form inputs */
+        /* Form inputs */
         input[type=text], input[type=password], select, textarea {
           width: 100%;
           padding: 12px;
@@ -67,7 +67,7 @@
           display: inline-block;
         }
 
-        input[type=submit] {
+        input[type=submit], input[type=button]#complete {
           background-color: #000;
           color: white;
           padding: 12px 20px;
@@ -77,30 +77,18 @@
           float: right;
         }
 
-        input[type=submit]:hover {
-          background-color: #333;
-        }
-        input[type=button]#complete {
-          background-color: #000;
-          color: white;
-          padding: 12px 20px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          float: right;
-        }
-
-        input[type=button]#complete:hover {
+        input[type=submit]:hover, input[type=button]#complete:hover {
           background-color: #333;
         }
 
-
+        /* Clear floats */
         .row:after {
           content: "";
           display: table;
           clear: both;
         }
 
+        /* Responsive design */
         @media screen and (max-width: 600px) {
           .container {
             width: 100%;
@@ -108,6 +96,7 @@
         }
     </style>
 
+    <!-- External libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
@@ -121,16 +110,19 @@
 </head>
 <body>
 
+<!-- Top Navigation -->
 <div class="topnav">
   <a href="/CI/user/welcome_page">Welcome</a>
-  <a class="active"  href="/CI/quiz/viewAddQuiz">Add Quiz</a>
+  <a class="active" href="/CI/quiz/viewAddQuiz">Add Quiz</a>
   <a href="/CI/quiz">Take Quiz</a>
   <a href="/CI/user/history">History</a>
   <a href="/CI/user/logout">Log Out</a>
 </div>
 
+<!-- Welcome Message -->
 <h3>Hey <?php $uname = $this->session->user_name; echo $uname; ?>!</h3>
 
+<!-- Create MCQ Form -->
 <h3>Create MCQ For Quiz no <?php $last_id = $this->session->last_id; echo $last_id; ?></h3>
 
 <div class="container">
@@ -139,7 +131,7 @@
  <div id="inputs">
     <div class="row">
       <div class="col-25">
-      <label for="topic" >Question number</label>
+      <label for="topic">Question number</label>
       </div>
       <div class="col-75">
         <input type="text" id="qno" name="qno" readonly>
@@ -154,6 +146,7 @@
       </div>
     </div>
 		
+    <!-- Options -->
     <div class="row">
       <div class="col-25">
       <label for="topic">Option 1</label>
@@ -178,6 +171,7 @@
         <input type="text" id="opt3" name="opt3" placeholder="Option 3">
       </div>
     </div>
+    <!-- Answer -->
     <div class="row">
       <div class="col-25">
       <label for="topic">Answer</label>
@@ -188,9 +182,9 @@
     </div>
 </div>
     
-     
 <br>
 
+    <!-- Create and Complete Buttons -->
     <div class="row" id="sbtn">
       <input type="submit" value="Create" id="create">
     </div>
@@ -199,6 +193,7 @@
     </div>
   </form>
 
+  <!-- Create message -->
   <p id="createmsg"></p>
 
 </div>
@@ -210,12 +205,11 @@
     var num = 1;
     $("input#qno").val(num); 
 
-
-
-
+    // Create button click event
 	  $("#create").click(function(event) {
 		  event.preventDefault();
 
+      // Form validation
       let q = document.forms["myForm"]["topic"].value;
       let opt1 = document.forms["myForm"]["opt1"].value;
       let opt2 = document.forms["myForm"]["opt2"].value;
@@ -239,6 +233,7 @@
 	    var question_option_3 = $("input#opt3").val();
 	    var question_answer = $("input#ans").val(); 
 
+      // AJAX request to add question
       $.ajax({
         method: "POST",
         url: "<?php echo base_url(); ?>quiz/addQuestion",	
@@ -248,19 +243,21 @@
         success: function(data) {
           $("#data").load(location.href + " #data");
 
-              $("input#topic").val(""); 
-              $("input#opt1").val(""); 
-              $("input#opt2").val("");
-              $("input#opt3").val("");
-              $("input#ans").val("");
+          // Clear input fields
+          $("input#topic").val(""); 
+          $("input#opt1").val(""); 
+          $("input#opt2").val("");
+          $("input#opt3").val("");
+          $("input#ans").val("");
 
-              ++num;
-              $("input#qno").val(num); 
-              if (num>9){
-                //$("div#inputs").hide();
-                $("div#sbtn").hide();
-                $("input#complete").show();
-              }
+          // Increment question number
+          ++num;
+          $("input#qno").val(num); 
+          // Hide form after 10 questions
+          if (num>9){
+            $("div#sbtn").hide();
+            $("input#complete").show();
+          }
 
         }
       });
@@ -268,7 +265,7 @@
   
 	  });
 
-
+    // Complete button click event
     $("#complete").click(function(event) {
 
       $("#data").load(location.href + " #data");
@@ -281,6 +278,7 @@
 
   });
 
+  // Backbone Model and View
   $(document).ready(function() {
      var Create = Backbone.Model.extend({
        url: function () {
@@ -326,10 +324,7 @@
      
     });
    
-  </script>
+</script>
 
-
-  
 </body>
 </html>
-
