@@ -101,11 +101,11 @@
 </head>
 <body>
 <div class="topnav">
-  <a class="active" href="/CI/user/welcome_page">Welcome</a>
-  <a href="/CI/quiz/viewAddQuiz">Add Quiz</a>
-  <a href="/CI/quiz">Take Quiz</a>
-  <a href="/CI/user/history">History</a>
-  <a href="/CI/user/logout">Log Out</a>
+  <a class="active" href="/quiz-serverside-master/user/welcome_page">Welcome</a>
+  <a href="/quiz-serverside-master/quiz/viewAddQuiz">Add Quiz</a>
+  <a href="/quiz-serverside-master/quiz">Take Quiz</a>
+  <a href="/quiz-serverside-master/user/history">History</a>
+  <a href="/quiz-serverside-master/user/logout">Log Out</a>
 </div>
 
 
@@ -118,13 +118,13 @@
 <div class="container">
   <h2>Add Quiz</h2>
   <p>Here you can add a new quiz.</p>
-  <a href="/CI/quiz/viewAddQuiz" class="btn btn-primary">Go to Add Quiz</a>
+  <a href="/quiz-serverside-master/quiz/viewAddQuiz" class="btn btn-primary">Go to Add Quiz</a>
 </div>
 
 <div class="container">
   <h2>Take Quiz</h2>
   <p>Ready to test your knowledge? Take a quiz now!</p>
-  <a href="/CI/quiz" class="btn btn-primary">Go to Take Quiz</a>
+  <a href="/quiz-serverside-master/quiz" class="btn btn-primary">Go to Take Quiz</a>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

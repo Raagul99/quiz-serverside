@@ -104,11 +104,11 @@
 <body>
 
 <div class="topnav">
-  <a href="/CI/user/welcome_page">Welcome</a>
-  <a class="active"  href="/CI/quiz/viewAddQuiz">Add Quiz</a>
-  <a href="/CI/quiz">Take Quiz</a>
-  <a href="/CI/user/history">History</a>
-  <a href="/CI/user/logout">Log Out</a>
+  <a href="/quiz-serverside-master/user/welcome_page">Welcome</a>
+  <a class="active"  href="/quiz-serverside-master/quiz/viewAddQuiz">Add Quiz</a>
+  <a href="/quiz-serverside-master/quiz">Take Quiz</a>
+  <a href="/quiz-serverside-master/user/history">History</a>
+  <a href="/quiz-serverside-master/user/logout">Log Out</a>
 </div>
 
 <h3>Hey <?php
@@ -185,7 +185,7 @@ echo $uname;
         success: function(data) {
           console.log(quiz_topic, quiz_difficulty, quiz_scoringsystem);
           $("#data").load(location.href + " #data");
-          var redirectUrl = "http://localhost/CI/quiz/viewAddQuestion";
+          var redirectUrl = "http://localhost/quiz-serverside-master/quiz/viewAddQuestion";
           window.location.href = redirectUrl;
         }
       });

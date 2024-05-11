@@ -108,11 +108,11 @@ body {
 </head>
 <body>
 <div class="topnav">
-  <a href="/CI/user/welcome_page">Welcome</a>
-  <a href="/CI/quiz/viewAddQuiz">Add Quiz</a>
-  <a class="active"  href="/CI/quiz">Take Quiz</a>
-  <a href="/CI/user/history">History</a>
-  <a href="/CI/user/logout">Log Out</a>
+  <a href="/quiz-serverside-master/user/welcome_page">Welcome</a>
+  <a href="/quiz-serverside-master/quiz/viewAddQuiz">Add Quiz</a>
+  <a class="active"  href="/quiz-serverside-master/quiz">Take Quiz</a>
+  <a href="/quiz-serverside-master/user/history">History</a>
+  <a href="/quiz-serverside-master/user/logout">Log Out</a>
 </div>
 
 <div class="container">
@@ -155,7 +155,7 @@ body {
 </html>
 <script>
     $('#quiz-table').DataTable( {
-        ajax: '/CI/quiz/quiz_data'
+        ajax: '/quiz-serverside-master/quiz/quiz_data'
     } );
 </script>
 

@@ -92,7 +92,7 @@
 //   $("#rev").click(function(event) {
 
 //       $("#data").load(location.href + " #data");
-//       var redirectUrl2 = "http://localhost/CI/quiz/addReviewView";
+//       var redirectUrl2 = "http://localhost/quiz-serverside-master/quiz/addReviewView";
 //       window.location.href = redirectUrl2;
 
 //   });

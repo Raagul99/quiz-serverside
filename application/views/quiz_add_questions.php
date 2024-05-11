@@ -274,7 +274,7 @@
       $("#data").load(location.href + " #data");
       alert("The questions has been added! Thank You!");
      
-      var redirectUrl2 = "http://localhost/CI/quiz/viewWelcomePage";
+      var redirectUrl2 = "http://localhost/CI/index.php/user/welcome_page";
       window.location.href = redirectUrl2;
 
     });
