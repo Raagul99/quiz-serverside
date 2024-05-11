@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Styles -->
     <style>
-        /* Add a black background color to the top navigation */
+        /* Set page background */
         body {
             background: url('https://wallpapercave.com/wp/wp9081316.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -14,32 +17,36 @@
             padding: 0;
             height: 100vh;
         }
-.topnav {
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background for navbar */
-    overflow: hidden;
-    
-}
-.topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-.topnav a.active {
-    background-color: #000000;
-    color: white;
-}
-		h1.welcome-message {
-          text-align: center;
+
+        /* Top navigation bar styles */
+        .topnav {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for navbar */
+            overflow: hidden;
+        }
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .topnav a.active {
+            background-color: #000000;
+            color: white;
+        }
+
+        /* Welcome message styles */
+        h1.welcome-message {
+            text-align: center;
         }
     </style>
 
+    <!-- External Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
@@ -50,6 +57,7 @@
 </head>
 <body>
 
+<!-- Top Navigation Bar -->
 <div class="topnav">
   <a href="/quiz-serverside-master/user/welcome_page">Welcome</a>
   <a href="/quiz-serverside-master/quiz/viewAddQuiz">Add Quiz</a>
@@ -58,14 +66,10 @@
   <a href="/quiz-serverside-master/user/logout">Log Out</a>
 </div>
 
-<h1 class="welcome-message">Welcome <?php
-$uname = $this->session->user_name;
-echo $uname;
-?>!</h1>
+<!-- Welcome Message -->
+<h1 class="welcome-message">Welcome <?php echo $this->session->user_name; ?>!</h1>
 
-
-<br><br><br><br><br><br>
-
+<!-- Quiz History Table -->
 <div class="container">
     <div class="row">
         <div class="col">
@@ -73,8 +77,8 @@ echo $uname;
             <table id="history-table" class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
-                        <td>Quiz Title</td>
-                        <td>Score</td>
+                        <th>Quiz Title</th>
+                        <th>Score</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,9 +88,12 @@ echo $uname;
     </div>
 </div>
 
+<!-- Link to Select Quizzes -->
 <p>If you want to select quizzes please click <a href="<?=base_url('quiz')?>">here</a></p>
 
+<!-- JavaScript -->
 <script>
+    // Initialize DataTable for history table
     $('#history-table').DataTable({
         ajax: '/quiz-serverside-master/user/history_data'
     });

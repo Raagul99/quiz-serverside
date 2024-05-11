@@ -6,10 +6,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <style>
+/* Global styles */
 * {
   box-sizing: border-box;
 }
 
+/* Form input styles */
 input[type=text], input[type=password], select, textarea {
   width: 100%;
   padding: 12px;
@@ -18,11 +20,13 @@ input[type=text], input[type=password], select, textarea {
   resize: vertical;
 }
 
+/* Label styles */
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
 
+/* Button styles */
 input[type=submit], input[type=button] {
   background-color: #000;
   color: white;
@@ -33,16 +37,19 @@ input[type=submit], input[type=button] {
   float: right;
 }
 
+/* Button hover styles */
 input[type=submit]:hover, input[type=button]:hover {
   background-color: #333;
 }
 
+/* Container styles */
 .container {
   border-radius: 5px;
   background-color:rgba(0, 0, 0, 0.5);
   padding: 20px;
 }
 
+/* Column styles */
 .col-25 {
   float: left;
   width: 25%;
@@ -55,17 +62,19 @@ input[type=submit]:hover, input[type=button]:hover {
   margin-top: 6px;
 }
 
+/* Clear floats */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
+/* Top navigation styles */
 .topnav {
-            background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background for navbar */
-            overflow: hidden;
-            
-        }
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background for navbar */
+    overflow: hidden;
+}
+
 .topnav a {
     float: left;
     color: #f2f2f2;
@@ -74,10 +83,12 @@ input[type=submit]:hover, input[type=button]:hover {
     text-decoration: none;
     font-size: 17px;
 }
+
 .topnav a:hover {
     background-color: #ddd;
     color: black;
 }
+
 .topnav a.active {
     background-color: #000000;
     color: white;
@@ -94,8 +105,6 @@ body {
     padding: 0;
     height: 100vh;
 }
-
-
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -107,6 +116,7 @@ body {
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
 </head>
 <body>
+<!-- Top Navigation -->
 <div class="topnav">
   <a href="/quiz-serverside-master/user/welcome_page">Welcome</a>
   <a href="/quiz-serverside-master/quiz/viewAddQuiz">Add Quiz</a>
@@ -115,7 +125,9 @@ body {
   <a href="/quiz-serverside-master/user/logout">Log Out</a>
 </div>
 
+<!-- Main Content -->
 <div class="container">
+    <!-- Quiz Table -->
     <div class="row">
         <div class="col">
             <h1>Please Choose a Quiz to Start</h1>
@@ -135,6 +147,7 @@ body {
     </div>
 </div>
 
+<!-- Quiz Selection Form -->
 <div class="container">
     <form method="post" action="<?=base_url('quiz/getReview')?>">
         <div class="row">
@@ -154,8 +167,8 @@ body {
 </body>
 </html>
 <script>
+    // Initialize DataTable
     $('#quiz-table').DataTable( {
         ajax: '/quiz-serverside-master/quiz/quiz_data'
     } );
 </script>
-

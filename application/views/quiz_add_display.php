@@ -3,11 +3,10 @@
 <head>
     <meta charset="utf-8">
     <style>
-        /* Add a black background color to the top navigation */
+        /* Styling for top navigation bar */
         .topnav {
-            background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background for navbar */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for navbar */
             overflow: hidden;
-            
         }
         .topnav a {
             float: left;
@@ -26,33 +25,33 @@
             color: white;
         }
 
-        /* Set page background color */
+        /* Styling for page background */
         body {
             background: url('https://wallpapercave.com/wp/wp9081316.jpg') no-repeat center center fixed;
             background-size: cover;
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(1px); /* Applying blur effect to background */
             font-family: Arial, sans-serif;
-            color: #fff;
+            color: #fff; /* Setting text color to white */
             margin: 0;
             padding: 0;
-            height: 100vh;
+            height: 100vh; /* Setting full height */
         }
 
-        /* Center the welcome message */
+        /* Centering the welcome message */
         h3 {
           text-align: center;
         }
 
-        /* Center the form */
+        /* Centering the form */
         .container {
-          margin: 0 auto;
-          width: 50%;
+          margin: 0 auto; /* Centering horizontally */
+          width: 50%; /* Setting width */
           padding: 20px;
-          background-color: rgba(0, 0, 0, 0.5);
+          background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
           border-radius: 5px;
         }
 
-        /* Style the form inputs */
+        /* Styling for form inputs */
         input[type=text], input[type=password], select, textarea {
           width: 100%;
           padding: 12px;
@@ -93,6 +92,7 @@
         }
     </style>
 
+    <!-- Importing necessary libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
@@ -103,6 +103,7 @@
 </head>
 <body>
 
+<!-- Top Navigation Bar -->
 <div class="topnav">
   <a href="/quiz-serverside-master/user/welcome_page">Welcome</a>
   <a class="active"  href="/quiz-serverside-master/quiz/viewAddQuiz">Add Quiz</a>
@@ -111,12 +112,14 @@
   <a href="/quiz-serverside-master/user/logout">Log Out</a>
 </div>
 
+<!-- Welcome Message -->
 <h3>Hey <?php
 $uname = $this->session->user_name;
 $last_id = $this->session->last_id;
 echo $uname;
 ?>!</h3>
 
+<!-- Create Quiz Form -->
 <h3>Create Quiz</h3>
 
 <div class="container">
@@ -157,6 +160,7 @@ echo $uname;
   </form>
 </div>
 
+<!-- JavaScript for handling form submission -->
 <script>
   $(document).ready(function() {
     $("#create").click(function(event) {
@@ -168,11 +172,12 @@ echo $uname;
         return false;
       }
 
-
+      // Retrieving form data
       var quiz_topic = $("input#topic").val();  
       var quiz_difficulty = $("select#q-difficulty").val();
       var quiz_scoringsystem = parseInt($("input#q-score").val()); 
 
+      // AJAX request to add quiz
       $.ajax({
         method: "POST",
         url: "<?php echo base_url(); ?>quiz/addQuiz",  
@@ -184,6 +189,7 @@ echo $uname;
         },
         success: function(data) {
           console.log(quiz_topic, quiz_difficulty, quiz_scoringsystem);
+          // Refreshing data after adding quiz
           $("#data").load(location.href + " #data");
           var redirectUrl = "http://localhost/quiz-serverside-master/quiz/viewAddQuestion";
           window.location.href = redirectUrl;
